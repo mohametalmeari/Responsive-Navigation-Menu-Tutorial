@@ -1,50 +1,7 @@
-**Responsive Navigation Menu Tutorial**
-
-Build a Responsive Navigation Menu with Smooth Transitions in HTML, SCSS, and JavaScript;
-
-First, inside the HTML file, create a burger button:
-
-```html
-<div class="menu-btn">
-  <span class="menu-btn__burger"></span>
-</div>
-```
-
-Then, create a navigation menu:
-
-```html
-<nav class="nav">
-  <ul class="menu-nav">
-    <li class="menu-nav__item active">
-      <a href="index.html" class="menu-nav__link">
-        Home
-      </a>
-    </li>
-    <li class="menu-nav__item">
-      <a href="page-1.html" class="menu-nav__link">
-        Page One
-      </a>
-    </li>
-    <li class="menu-nav__item">
-      <a href="page-2.html" class="menu-nav__link">
-        Page Two
-      </a>
-    </li>
-  </ul>
-</nav>
-```
-
-Inside the SCSS file, create a mixin for smooth transitions:
-
-```scss
 @mixin transition-ease {
   transition: all 0.5s ease-in-out;
 }
-```
 
-Next, add styles for the burger button:
-
-```scss
 .menu-btn {
   position: relative;
   z-index: 1;
@@ -97,11 +54,7 @@ Next, add styles for the burger button:
     }
   }
 }
-```
 
-And add styles for the navigation menu:
-
-```scss
 .nav {
   position: fixed;
   top: 0;
@@ -145,7 +98,7 @@ And add styles for the navigation menu:
         transform: translateX(0);
       }
 
-      &.active > a {
+      &.active>a {
         color: darkblue;
       }
     }
@@ -164,21 +117,13 @@ And add styles for the navigation menu:
     }
   }
 }
-```
 
-Create a delay transition for menu items:
-
-```scss
 @for $i from 1 through 4 {
   .menu-nav__item:nth-child(#{$i}) {
     transition-delay: (0.1s * $i) + 0.15s;
   }
 }
-```
 
-Finally, create media queries to make the menu responsive.
-
-```scss
 @media screen and (min-width: 768px) {
   .menu-btn {
     visibility: hidden;
@@ -187,7 +132,7 @@ Finally, create media queries to make the menu responsive.
   .nav {
     visibility: visible;
 
-    .menu-nav{
+    .menu-nav {
       display: block;
       transform: translateY(0);
       height: 100%;
@@ -205,36 +150,3 @@ Finally, create media queries to make the menu responsive.
     }
   }
 }
-```
-
-Now, in the JS file, create a toggle function and add it to an event listener for the burger button:
-
-```js
-const menuBtn = document.querySelector('.menu-btn');
-const hamburger = document.querySelector('.menu-btn__burger');
-const nav = document.querySelector('.nav');
-const menuNav = document.querySelector('.menu-nav');
-const navItems = document.querySelectorAll('.menu-nav__item');
-
-let showMenu = false;
-
-const toggleMenu = () => {
-  if (!showMenu) {
-    hamburger.classList.add('open');
-    nav.classList.add('open');
-    menuNav.classList.add('open');
-    navItems.forEach(item => item.classList.add('open'));
-    showMenu = true;
-  } else{
-    hamburger.classList.remove('open');
-    nav.classList.remove('open');
-    menuNav.classList.remove('open');
-    navItems.forEach(item => item.classList.remove('open'));
-    showMenu = false;
-  }
-}
-
-menuBtn.addEventListener('click', toggleMenu);
-```
-
-Congrats! You just created your [responsive navigation menu](https://mo-dev.site/Responsive-Navigation-Menu-Tutorial/dist/).
